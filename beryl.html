@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Form Validation</title>
+<style>
+  body {
+    font-family: Poppins, sans-serif;
+    background: #f2f4f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 320px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  .input-group {
+    margin-bottom: 1.2rem;
+    position: relative;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.7rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: 0.3s ease;
+  }
+
+  /* Highlight valid inputs */
+  input:valid {
+    border-color: #28a745;
+    background: #e6f9ed;
+  }
+
+  /* Highlight invalid inputs */
+  input:invalid:focus {
+    border-color: #dc3545;
+    background: #fde8e8;
+  }
+
+  /* Add checkmark / cross icons */
+  input:valid + span::after {
+    content: "✔";
+    color: #28a745;
+    position: absolute;
+    right: 10px;
+    top: 38px;
+  }
+
+  input:invalid:focus + span::after {
+    content: "✖";
+    color: #dc3545;
+    position: absolute;
+    right: 10px;
+    top: 38px;
+  }
+
+  button {
+    width: 100%;
+    padding: 0.8rem;
+    background: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background: #0056b3;
+  }
+
+</style>
+</head>
+<body>
+  <form>
+    <h2>Sign Up</h2>
+
+    <div class="input-group">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" pattern="[A-Za-z\s]{3,}" required placeholder="John Doe">
+      <span></span>
+    </div>
+
+    <div class="input-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required placeholder="example@email.com">
+      <span></span>
+    </div>
+
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" pattern=".{6,}" required placeholder="Min 6 characters">
+      <span></span>
+    </div>
+
+    <button type="submit">Create Account</button>
+  </form>
+</body>
+</html>
